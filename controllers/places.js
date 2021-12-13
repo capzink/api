@@ -1,4 +1,4 @@
-import HttpError from "../models/http-error.model.js";
+import HttpError from "../models/error.js";
 
 const DUMMY_PLACES = [
   {
@@ -15,7 +15,7 @@ const DUMMY_PLACES = [
 ];
 
 const getPlaceById = (req, res, next) => {
-  const { placeId } = req.params; // { pid: 'p1' }
+  const { placeId } = req.params; 
 
   const place = DUMMY_PLACES.find((place) => {
     return place.id === placeId;
@@ -25,8 +25,9 @@ const getPlaceById = (req, res, next) => {
     throw new HttpError("Could not find a place for the provided id.", 404);
   }
 
-  res.json({ place }); // => { place } => { place: place }
+  res.json({ place }); 
 };
+
 const getPlaceByUserId = (req, res, next) => {
   const { userId } = req.params;
 
